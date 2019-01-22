@@ -1,0 +1,36 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.demo.scheduletreatment",
+            "nativeLanguage": "es"
+        },
+        "jhipsterVersion": "5.7.2",
+        "applicationType": "monolith",
+        "baseName": "treatmentschedule",
+        "packageName": "com.demo.scheduletreatment",
+        "packageFolder": "com/demo/scheduletreatment",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "postgresql",
+        "searchEngine": "elasticsearch",
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "Yjc4NWY5N2ViNjA3OTQ5YTU2YjMwMzM2ZmZhYmU3N2JkMjcyZWJhODhmODBmY2IwMjFkZThmNjVjMTJmNGJkMDZlMTY3NjRlZGRkNGE5NGM4MmU3YjFhMTZhZWRmMmY2ZDU1MWRlMDA0YWEwZGJkM2MxNmQyZDk0OGI0MmNiMjQ=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": ["gatling", "cucumber", "protractor"],
+        "jhiPrefix": "jhi",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "es",
+        "languages": ["es", "en"]
+    }
+}

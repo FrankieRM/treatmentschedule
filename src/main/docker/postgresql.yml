@@ -1,0 +1,11 @@
+version: '2'
+services:
+    treatmentschedule-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/treatmentschedule/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=treatmentschedule
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
