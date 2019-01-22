@@ -1,0 +1,106 @@
+
+entity Treatment {
+    discount Double,
+	warningsAboutPatient String
+}
+
+entity TreatmentItem {
+	initialServiceDate Instant,
+    discount Double,
+    total Double
+}
+
+entity Item {
+	description String,
+    price Double
+}
+
+entity Schedule {
+	initialAppointmentDate Instant required,
+    finalAppointmentDate Instant required,
+    duration Instant
+}
+
+entity AppointmentStatusHistory {
+	modifyDate Instant
+}
+
+entity Patient {
+    internNumber String,
+	commune String,
+	occupation String,
+	employer String,
+	representative String,
+	reference String,
+    observations String
+}
+
+entity Employee {
+    position String,
+    degree String
+}
+
+entity Address {
+	descriptionAddress String,
+    references String
+}
+
+entity Person {
+	firstName String required,
+	lastName String required,
+    documentNumber String,
+    gender String,
+    birthDay Instant,
+    years Integer
+}
+
+entity Contact {
+	value String required
+}
+
+entity Parameter {
+	value String required,
+    status Boolean
+}
+
+relationship ManyToMany {
+    Employee{specialty} to Parameter{employee}
+}
+
+relationship ManyToOne {
+	//Muchos empleados tienen asignado el mismo lugar de trabajo
+    Employee{workPlaceAddress} to Address
+    //Muchos parametros tienen asignado el mismo parametro padre
+    Parameter{parent} to Parameter
+}
+
+relationship OneToMany {
+	Person{contact} to Contact,
+	Schedule{appointmentStatusHistory} to AppointmentStatusHistory,
+    Treatment{treatmentItem} to TreatmentItem,
+    TreatmentItem{item} to Item
+}
+
+relationship OneToOne {
+    AppointmentStatusHistory{appointmentStatus} to Parameter,
+	Schedule{employee} to Employee,
+    Schedule{patient} to Patient,
+    Schedule{situation} to Parameter,
+    Patient{person} to Person,
+    Patient{sex} to Parameter,
+    Employee{person} to Person,
+    Employee{user} to User,
+    //Cada empleado o paciente tiene una direccion
+    Person{address} to Address,
+	Contact{contactType} to Parameter,
+    Person{documentType} to Parameter,
+    Address{addressType} to Parameter,
+    Address{country} to Parameter,
+    Address{department} to Parameter,
+    Address{province} to Parameter,
+    Address{district} to Parameter,
+    TreatmentItem{paymentStatus} to Parameter,
+    Treatment{schedule} to Schedule
+}
+
+paginate Address, Employee, Patient, Parameter, Item with pagination
