@@ -31,6 +31,8 @@
         "otherModules": [],
         "enableTranslation": true,
         "nativeLanguage": "es",
-        "languages": ["es", "en"]
+        "languages": ["es", "en"],
+        "herokuAppName": "treatmentschedule",
+        "herokuDeployType": "git"
     }
 }
