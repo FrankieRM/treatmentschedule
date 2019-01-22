@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-address-heading" jhiTranslate="treatmentscheduleApp.address.home.createOrEditLabel">Create or edit a Address</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!address.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="address.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.descriptionAddress" for="field_descriptionAddress">Description Address</label>
+                    <input type="text" class="form-control" name="descriptionAddress" id="field_descriptionAddress"
+                        [(ngModel)]="address.descriptionAddress" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.references" for="field_references">References</label>
+                    <input type="text" class="form-control" name="references" id="field_references"
+                        [(ngModel)]="address.references" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.addressType" for="field_addressType">Address Type</label>
+                    <select class="form-control" id="field_addressType" name="addressType" [(ngModel)]="address.addressType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === address.addressType?.id ? address.addressType : parameterOption" *ngFor="let parameterOption of addresstypes; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.country" for="field_country">Country</label>
+                    <select class="form-control" id="field_country" name="country" [(ngModel)]="address.country">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === address.country?.id ? address.country : parameterOption" *ngFor="let parameterOption of countries; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.department" for="field_department">Department</label>
+                    <select class="form-control" id="field_department" name="department" [(ngModel)]="address.department">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === address.department?.id ? address.department : parameterOption" *ngFor="let parameterOption of departments; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.province" for="field_province">Province</label>
+                    <select class="form-control" id="field_province" name="province" [(ngModel)]="address.province">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === address.province?.id ? address.province : parameterOption" *ngFor="let parameterOption of provinces; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.address.district" for="field_district">District</label>
+                    <select class="form-control" id="field_district" name="district" [(ngModel)]="address.district">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === address.district?.id ? address.district : parameterOption" *ngFor="let parameterOption of districts; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

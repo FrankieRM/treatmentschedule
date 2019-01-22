@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-patient-heading" jhiTranslate="treatmentscheduleApp.patient.home.createOrEditLabel">Create or edit a Patient</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!patient.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="patient.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.internNumber" for="field_internNumber">Intern Number</label>
+                    <input type="text" class="form-control" name="internNumber" id="field_internNumber"
+                        [(ngModel)]="patient.internNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.commune" for="field_commune">Commune</label>
+                    <input type="text" class="form-control" name="commune" id="field_commune"
+                        [(ngModel)]="patient.commune" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.occupation" for="field_occupation">Occupation</label>
+                    <input type="text" class="form-control" name="occupation" id="field_occupation"
+                        [(ngModel)]="patient.occupation" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.employer" for="field_employer">Employer</label>
+                    <input type="text" class="form-control" name="employer" id="field_employer"
+                        [(ngModel)]="patient.employer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.representative" for="field_representative">Representative</label>
+                    <input type="text" class="form-control" name="representative" id="field_representative"
+                        [(ngModel)]="patient.representative" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.reference" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                        [(ngModel)]="patient.reference" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.observations" for="field_observations">Observations</label>
+                    <input type="text" class="form-control" name="observations" id="field_observations"
+                        [(ngModel)]="patient.observations" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.person" for="field_person">Person</label>
+                    <select class="form-control" id="field_person" name="person" [(ngModel)]="patient.person">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personOption.id === patient.person?.id ? patient.person : personOption" *ngFor="let personOption of people; trackBy: trackPersonById">{{personOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.patient.sex" for="field_sex">Sex</label>
+                    <select class="form-control" id="field_sex" name="sex" [(ngModel)]="patient.sex">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === patient.sex?.id ? patient.sex : parameterOption" *ngFor="let parameterOption of sexes; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

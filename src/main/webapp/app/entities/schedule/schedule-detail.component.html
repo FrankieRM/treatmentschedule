@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="schedule">
+            <h2><span jhiTranslate="treatmentscheduleApp.schedule.detail.title">Schedule</span> {{schedule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.initialAppointmentDate">Initial Appointment Date</span></dt>
+                <dd>
+                    <span>{{schedule.initialAppointmentDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.finalAppointmentDate">Final Appointment Date</span></dt>
+                <dd>
+                    <span>{{schedule.finalAppointmentDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.duration">Duration</span></dt>
+                <dd>
+                    <span>{{schedule.duration}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="schedule.employee">
+                        <a [routerLink]="['/employee', schedule.employee?.id, 'view']">{{schedule.employee?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.patient">Patient</span></dt>
+                <dd>
+                    <div *ngIf="schedule.patient">
+                        <a [routerLink]="['/patient', schedule.patient?.id, 'view']">{{schedule.patient?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.schedule.situation">Situation</span></dt>
+                <dd>
+                    <div *ngIf="schedule.situation">
+                        <a [routerLink]="['/parameter', schedule.situation?.id, 'view']">{{schedule.situation?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule', schedule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

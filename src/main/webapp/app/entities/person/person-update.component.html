@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-person-heading" jhiTranslate="treatmentscheduleApp.person.home.createOrEditLabel">Create or edit a Person</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!person.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="person.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                        [(ngModel)]="person.firstName" required/>
+                    <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                        [(ngModel)]="person.lastName" required/>
+                    <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.documentNumber" for="field_documentNumber">Document Number</label>
+                    <input type="text" class="form-control" name="documentNumber" id="field_documentNumber"
+                        [(ngModel)]="person.documentNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.gender" for="field_gender">Gender</label>
+                    <input type="text" class="form-control" name="gender" id="field_gender"
+                        [(ngModel)]="person.gender" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.birthDay" for="field_birthDay">Birth Day</label>
+                    <div class="d-flex">
+                        <input id="field_birthDay" type="datetime-local" class="form-control" name="birthDay" [(ngModel)]="birthDay"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.years" for="field_years">Years</label>
+                    <input type="number" class="form-control" name="years" id="field_years"
+                        [(ngModel)]="person.years" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.address" for="field_address">Address</label>
+                    <select class="form-control" id="field_address" name="address" [(ngModel)]="person.address">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === person.address?.id ? person.address : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.person.documentType" for="field_documentType">Document Type</label>
+                    <select class="form-control" id="field_documentType" name="documentType" [(ngModel)]="person.documentType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === person.documentType?.id ? person.documentType : parameterOption" *ngFor="let parameterOption of documenttypes; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

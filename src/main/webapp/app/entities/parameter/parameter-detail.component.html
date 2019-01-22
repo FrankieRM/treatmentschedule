@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="parameter">
+            <h2><span jhiTranslate="treatmentscheduleApp.parameter.detail.title">Parameter</span> {{parameter.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.parameter.value">Value</span></dt>
+                <dd>
+                    <span>{{parameter.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.parameter.status">Status</span></dt>
+                <dd>
+                    <span>{{parameter.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.parameter.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="parameter.parent">
+                        <a [routerLink]="['/parameter', parameter.parent?.id, 'view']">{{parameter.parent?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/parameter', parameter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

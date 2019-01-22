@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="treatmentItem">
+            <h2><span jhiTranslate="treatmentscheduleApp.treatmentItem.detail.title">Treatment Item</span> {{treatmentItem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.treatmentItem.initialServiceDate">Initial Service Date</span></dt>
+                <dd>
+                    <span>{{treatmentItem.initialServiceDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatmentItem.discount">Discount</span></dt>
+                <dd>
+                    <span>{{treatmentItem.discount}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatmentItem.total">Total</span></dt>
+                <dd>
+                    <span>{{treatmentItem.total}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatmentItem.treatment">Treatment</span></dt>
+                <dd>
+                    <div *ngIf="treatmentItem.treatment">
+                        <a [routerLink]="['/treatment', treatmentItem.treatment?.id, 'view']">{{treatmentItem.treatment?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatmentItem.paymentStatus">Payment Status</span></dt>
+                <dd>
+                    <div *ngIf="treatmentItem.paymentStatus">
+                        <a [routerLink]="['/parameter', treatmentItem.paymentStatus?.id, 'view']">{{treatmentItem.paymentStatus?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/treatment-item', treatmentItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

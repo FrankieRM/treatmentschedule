@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="address">
+            <h2><span jhiTranslate="treatmentscheduleApp.address.detail.title">Address</span> {{address.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.address.descriptionAddress">Description Address</span></dt>
+                <dd>
+                    <span>{{address.descriptionAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.references">References</span></dt>
+                <dd>
+                    <span>{{address.references}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.addressType">Address Type</span></dt>
+                <dd>
+                    <div *ngIf="address.addressType">
+                        <a [routerLink]="['/parameter', address.addressType?.id, 'view']">{{address.addressType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="address.country">
+                        <a [routerLink]="['/parameter', address.country?.id, 'view']">{{address.country?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.department">Department</span></dt>
+                <dd>
+                    <div *ngIf="address.department">
+                        <a [routerLink]="['/parameter', address.department?.id, 'view']">{{address.department?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.province">Province</span></dt>
+                <dd>
+                    <div *ngIf="address.province">
+                        <a [routerLink]="['/parameter', address.province?.id, 'view']">{{address.province?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.address.district">District</span></dt>
+                <dd>
+                    <div *ngIf="address.district">
+                        <a [routerLink]="['/parameter', address.district?.id, 'view']">{{address.district?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address', address.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

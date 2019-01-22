@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-treatment-heading" jhiTranslate="treatmentscheduleApp.treatment.home.createOrEditLabel">Create or edit a Treatment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!treatment.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="treatment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.treatment.discount" for="field_discount">Discount</label>
+                    <input type="number" class="form-control" name="discount" id="field_discount"
+                        [(ngModel)]="treatment.discount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.treatment.warningsAboutPatient" for="field_warningsAboutPatient">Warnings About Patient</label>
+                    <input type="text" class="form-control" name="warningsAboutPatient" id="field_warningsAboutPatient"
+                        [(ngModel)]="treatment.warningsAboutPatient" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.treatment.schedule" for="field_schedule">Schedule</label>
+                    <select class="form-control" id="field_schedule" name="schedule" [(ngModel)]="treatment.schedule">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="scheduleOption.id === treatment.schedule?.id ? treatment.schedule : scheduleOption" *ngFor="let scheduleOption of schedules; trackBy: trackScheduleById">{{scheduleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

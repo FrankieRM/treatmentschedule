@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="treatmentscheduleApp.treatmentItem.home.title">Treatment Items</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-treatment-item" [routerLink]="['/treatment-item/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="treatmentscheduleApp.treatmentItem.home.createLabel">
+            Create new Treatment Item
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'treatmentscheduleApp.treatmentItem.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="treatmentItems">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="treatmentscheduleApp.treatmentItem.initialServiceDate">Initial Service Date</span></th>
+            <th><span jhiTranslate="treatmentscheduleApp.treatmentItem.discount">Discount</span></th>
+            <th><span jhiTranslate="treatmentscheduleApp.treatmentItem.total">Total</span></th>
+            <th><span jhiTranslate="treatmentscheduleApp.treatmentItem.treatment">Treatment</span></th>
+            <th><span jhiTranslate="treatmentscheduleApp.treatmentItem.paymentStatus">Payment Status</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let treatmentItem of treatmentItems ;trackBy: trackId">
+                <td><a [routerLink]="['/treatment-item', treatmentItem.id, 'view' ]">{{treatmentItem.id}}</a></td>
+                <td>{{treatmentItem.initialServiceDate | date:'medium'}}</td>
+                <td>{{treatmentItem.discount}}</td>
+                <td>{{treatmentItem.total}}</td>
+                <td>
+                    <div *ngIf="treatmentItem.treatment">
+                        <a [routerLink]="['../treatment', treatmentItem.treatment?.id, 'view' ]" >{{treatmentItem.treatment?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="treatmentItem.paymentStatus">
+                        <a [routerLink]="['../parameter', treatmentItem.paymentStatus?.id, 'view' ]" >{{treatmentItem.paymentStatus?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/treatment-item', treatmentItem.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/treatment-item', treatmentItem.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'treatment-item/'+ treatmentItem.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

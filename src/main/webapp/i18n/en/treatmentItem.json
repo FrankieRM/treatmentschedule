@@ -1,0 +1,27 @@
+{
+    "treatmentscheduleApp": {
+        "treatmentItem": {
+            "home": {
+                "title": "Treatment Items",
+                "createLabel": "Create a new Treatment Item",
+                "createOrEditLabel": "Create or edit a Treatment Item",
+                "search": "Search for Treatment Item"
+            },
+            "created": "A new Treatment Item is created with identifier {{ param }}",
+            "updated": "A Treatment Item is updated with identifier {{ param }}",
+            "deleted": "A Treatment Item is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Treatment Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Treatment Item"
+            },
+            "initialServiceDate": "Initial Service Date",
+            "discount": "Discount",
+            "total": "Total",
+            "treatment": "Treatment",
+            "paymentStatus": "Payment Status",
+            "item": "Item"
+        }
+    }
+}

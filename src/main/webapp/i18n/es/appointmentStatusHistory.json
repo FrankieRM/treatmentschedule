@@ -1,0 +1,24 @@
+{
+    "treatmentscheduleApp": {
+        "appointmentStatusHistory": {
+            "home": {
+                "title": "Appointment Status Histories",
+                "createLabel": "Crear nuevo Appointment Status History",
+                "createOrEditLabel": "Crear o editar Appointment Status History",
+                "search": "Search for Appointment Status History"
+            },
+            "created": "Un nuevo Appointment Status History ha sido creado con el identificador {{ param }}",
+            "updated": "Un Appointment Status History ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Appointment Status History ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Appointment Status History {{ id }}?"
+            },
+            "detail": {
+                "title": "Appointment Status History"
+            },
+            "modifyDate": "Modify Date",
+            "schedule": "Schedule",
+            "appointmentStatus": "Appointment Status"
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "name": "Schedule",
+    "fields": [
+        {
+            "fieldName": "initialAppointmentDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "finalAppointmentDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "patient",
+            "otherEntityName": "patient",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "situation",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "appointmentStatusHistory",
+            "otherEntityName": "appointmentStatusHistory",
+            "otherEntityRelationshipName": "schedule"
+        }
+    ],
+    "changelogDate": "20190122194157",
+    "entityTableName": "schedule",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

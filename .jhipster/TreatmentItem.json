@@ -1,0 +1,48 @@
+{
+    "name": "TreatmentItem",
+    "fields": [
+        {
+            "fieldName": "initialServiceDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "treatment",
+            "otherEntityName": "treatment",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "paymentStatus",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "treatmentItem"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "item",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "treatmentItem"
+        }
+    ],
+    "changelogDate": "20190122194155",
+    "entityTableName": "treatment_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

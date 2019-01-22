@@ -1,0 +1,25 @@
+{
+    "treatmentscheduleApp": {
+        "parameter": {
+            "home": {
+                "title": "Parameters",
+                "createLabel": "Crear nuevo Parameter",
+                "createOrEditLabel": "Crear o editar Parameter",
+                "search": "Search for Parameter"
+            },
+            "created": "Un nuevo Parameter ha sido creado con el identificador {{ param }}",
+            "updated": "Un Parameter ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Parameter ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Parameter {{ id }}?"
+            },
+            "detail": {
+                "title": "Parameter"
+            },
+            "value": "Value",
+            "status": "Status",
+            "parent": "Parent",
+            "employee": "Employee"
+        }
+    }
+}

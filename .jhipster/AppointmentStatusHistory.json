@@ -1,0 +1,34 @@
+{
+    "name": "AppointmentStatusHistory",
+    "fields": [
+        {
+            "fieldName": "modifyDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "schedule",
+            "otherEntityName": "schedule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "appointmentStatus",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "appointmentStatusHistory"
+        }
+    ],
+    "changelogDate": "20190122194158",
+    "entityTableName": "appointment_status_history",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

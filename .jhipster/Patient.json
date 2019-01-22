@@ -1,0 +1,60 @@
+{
+    "name": "Patient",
+    "fields": [
+        {
+            "fieldName": "internNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "commune",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "occupation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "representative",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "observations",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "patient"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "sex",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "patient"
+        }
+    ],
+    "changelogDate": "20190122194159",
+    "entityTableName": "patient",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

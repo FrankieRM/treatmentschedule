@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-schedule-heading" jhiTranslate="treatmentscheduleApp.schedule.home.createOrEditLabel">Create or edit a Schedule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!schedule.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="schedule.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.initialAppointmentDate" for="field_initialAppointmentDate">Initial Appointment Date</label>
+                    <div class="d-flex">
+                        <input id="field_initialAppointmentDate" type="datetime-local" class="form-control" name="initialAppointmentDate" [(ngModel)]="initialAppointmentDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.initialAppointmentDate?.dirty && editForm.controls.initialAppointmentDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.initialAppointmentDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.initialAppointmentDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.finalAppointmentDate" for="field_finalAppointmentDate">Final Appointment Date</label>
+                    <div class="d-flex">
+                        <input id="field_finalAppointmentDate" type="datetime-local" class="form-control" name="finalAppointmentDate" [(ngModel)]="finalAppointmentDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.finalAppointmentDate?.dirty && editForm.controls.finalAppointmentDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.finalAppointmentDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.finalAppointmentDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.duration" for="field_duration">Duration</label>
+                    <div class="d-flex">
+                        <input id="field_duration" type="datetime-local" class="form-control" name="duration" [(ngModel)]="duration"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.employee" for="field_employee">Employee</label>
+                    <select class="form-control" id="field_employee" name="employee" [(ngModel)]="schedule.employee">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === schedule.employee?.id ? schedule.employee : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.patient" for="field_patient">Patient</label>
+                    <select class="form-control" id="field_patient" name="patient" [(ngModel)]="schedule.patient">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id === schedule.patient?.id ? schedule.patient : patientOption" *ngFor="let patientOption of patients; trackBy: trackPatientById">{{patientOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.schedule.situation" for="field_situation">Situation</label>
+                    <select class="form-control" id="field_situation" name="situation" [(ngModel)]="schedule.situation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parameterOption.id === schedule.situation?.id ? schedule.situation : parameterOption" *ngFor="let parameterOption of situations; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

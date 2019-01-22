@@ -38,6 +38,23 @@ public class CacheConfiguration {
             cm.createCache(com.demo.scheduletreatment.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.demo.scheduletreatment.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.demo.scheduletreatment.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Treatment.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Treatment.class.getName() + ".treatmentItems", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.TreatmentItem.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.TreatmentItem.class.getName() + ".items", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Item.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Schedule.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Schedule.class.getName() + ".appointmentStatusHistories", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.AppointmentStatusHistory.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Patient.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Employee.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Employee.class.getName() + ".specialties", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Address.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Person.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Person.class.getName() + ".contacts", jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Contact.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Parameter.class.getName(), jcacheConfiguration);
+            cm.createCache(com.demo.scheduletreatment.domain.Parameter.class.getName() + ".employees", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

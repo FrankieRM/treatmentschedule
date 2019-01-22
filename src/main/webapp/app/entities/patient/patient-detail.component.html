@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="patient">
+            <h2><span jhiTranslate="treatmentscheduleApp.patient.detail.title">Patient</span> {{patient.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.internNumber">Intern Number</span></dt>
+                <dd>
+                    <span>{{patient.internNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.commune">Commune</span></dt>
+                <dd>
+                    <span>{{patient.commune}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.occupation">Occupation</span></dt>
+                <dd>
+                    <span>{{patient.occupation}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.employer">Employer</span></dt>
+                <dd>
+                    <span>{{patient.employer}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.representative">Representative</span></dt>
+                <dd>
+                    <span>{{patient.representative}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.reference">Reference</span></dt>
+                <dd>
+                    <span>{{patient.reference}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.observations">Observations</span></dt>
+                <dd>
+                    <span>{{patient.observations}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.person">Person</span></dt>
+                <dd>
+                    <div *ngIf="patient.person">
+                        <a [routerLink]="['/person', patient.person?.id, 'view']">{{patient.person?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.patient.sex">Sex</span></dt>
+                <dd>
+                    <div *ngIf="patient.sex">
+                        <a [routerLink]="['/parameter', patient.sex?.id, 'view']">{{patient.sex?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/patient', patient.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+    "treatmentscheduleApp": {
+        "schedule": {
+            "home": {
+                "title": "Schedules",
+                "createLabel": "Crear nuevo Schedule",
+                "createOrEditLabel": "Crear o editar Schedule",
+                "search": "Search for Schedule"
+            },
+            "created": "Un nuevo Schedule ha sido creado con el identificador {{ param }}",
+            "updated": "Un Schedule ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Schedule ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Schedule {{ id }}?"
+            },
+            "detail": {
+                "title": "Schedule"
+            },
+            "initialAppointmentDate": "Initial Appointment Date",
+            "finalAppointmentDate": "Final Appointment Date",
+            "duration": "Duration",
+            "employee": "Employee",
+            "patient": "Patient",
+            "situation": "Situation",
+            "appointmentStatusHistory": "Appointment Status History"
+        }
+    }
+}

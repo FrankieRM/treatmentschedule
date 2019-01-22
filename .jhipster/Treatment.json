@@ -1,0 +1,38 @@
+{
+    "name": "Treatment",
+    "fields": [
+        {
+            "fieldName": "discount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "warningsAboutPatient",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "schedule",
+            "otherEntityName": "schedule",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "treatment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "treatmentItem",
+            "otherEntityName": "treatmentItem",
+            "otherEntityRelationshipName": "treatment"
+        }
+    ],
+    "changelogDate": "20190122194154",
+    "entityTableName": "treatment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

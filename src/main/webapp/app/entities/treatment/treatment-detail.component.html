@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="treatment">
+            <h2><span jhiTranslate="treatmentscheduleApp.treatment.detail.title">Treatment</span> {{treatment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.treatment.discount">Discount</span></dt>
+                <dd>
+                    <span>{{treatment.discount}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatment.warningsAboutPatient">Warnings About Patient</span></dt>
+                <dd>
+                    <span>{{treatment.warningsAboutPatient}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.treatment.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="treatment.schedule">
+                        <a [routerLink]="['/schedule', treatment.schedule?.id, 'view']">{{treatment.schedule?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/treatment', treatment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

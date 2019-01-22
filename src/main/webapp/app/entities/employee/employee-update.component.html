@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-employee-heading" jhiTranslate="treatmentscheduleApp.employee.home.createOrEditLabel">Create or edit a Employee</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!employee.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="employee.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.employee.position" for="field_position">Position</label>
+                    <input type="text" class="form-control" name="position" id="field_position"
+                        [(ngModel)]="employee.position" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.employee.degree" for="field_degree">Degree</label>
+                    <input type="text" class="form-control" name="degree" id="field_degree"
+                        [(ngModel)]="employee.degree" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.employee.person" for="field_person">Person</label>
+                    <select class="form-control" id="field_person" name="person" [(ngModel)]="employee.person">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personOption.id === employee.person?.id ? employee.person : personOption" *ngFor="let personOption of people; trackBy: trackPersonById">{{personOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.employee.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="employee.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === employee.user?.id ? employee.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.employee.workPlaceAddress" for="field_workPlaceAddress">Work Place Address</label>
+                    <select class="form-control" id="field_workPlaceAddress" name="workPlaceAddress" [(ngModel)]="employee.workPlaceAddress" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === employee.workPlaceAddress?.id ? employee.workPlaceAddress : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="treatmentscheduleApp.employee.specialty" for="field_specialty">Specialty</label>
+                    <select class="form-control" id="field_specialty" multiple name="specialty" [(ngModel)]="employee.specialties">
+                        <option [ngValue]="getSelected(employee.specialties, parameterOption)" *ngFor="let parameterOption of parameters; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employee">
+            <h2><span jhiTranslate="treatmentscheduleApp.employee.detail.title">Employee</span> {{employee.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.position">Position</span></dt>
+                <dd>
+                    <span>{{employee.position}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.degree">Degree</span></dt>
+                <dd>
+                    <span>{{employee.degree}}</span>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.person">Person</span></dt>
+                <dd>
+                    <div *ngIf="employee.person">
+                        <a [routerLink]="['/person', employee.person?.id, 'view']">{{employee.person?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.user">User</span></dt>
+                <dd>
+                    {{employee.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.workPlaceAddress">Work Place Address</span></dt>
+                <dd>
+                    <div *ngIf="employee.workPlaceAddress">
+                        <a [routerLink]="['/address', employee.workPlaceAddress?.id, 'view']">{{employee.workPlaceAddress?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="treatmentscheduleApp.employee.specialty">Specialty</span></dt>
+                <dd>
+                    <span *ngFor="let specialty of employee.specialties; let last = last">
+                        <a [routerLink]="['/parameter', specialty?.id, 'view' ]">{{specialty.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee', employee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

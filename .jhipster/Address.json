@@ -1,0 +1,64 @@
+{
+    "name": "Address",
+    "fields": [
+        {
+            "fieldName": "descriptionAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "references",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "addressType",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "department",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "province",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "district",
+            "otherEntityName": "parameter",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "address"
+        }
+    ],
+    "changelogDate": "20190122194201",
+    "entityTableName": "address",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

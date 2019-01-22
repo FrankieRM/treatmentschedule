@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Address.
+    -->
+    <changeSet id="20190122194201-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="address_type_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_address_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parameter"/>
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parameter"/>
+
+        <addForeignKeyConstraint baseColumnNames="department_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_department_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parameter"/>
+
+        <addForeignKeyConstraint baseColumnNames="province_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_province_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parameter"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parameter"/>
+
+    </changeSet>
+</databaseChangeLog>

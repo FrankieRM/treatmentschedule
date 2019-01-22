@@ -1,0 +1,30 @@
+{
+    "treatmentscheduleApp": {
+        "patient": {
+            "home": {
+                "title": "Patients",
+                "createLabel": "Crear nuevo Patient",
+                "createOrEditLabel": "Crear o editar Patient",
+                "search": "Search for Patient"
+            },
+            "created": "Un nuevo Patient ha sido creado con el identificador {{ param }}",
+            "updated": "Un Patient ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Patient ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Patient {{ id }}?"
+            },
+            "detail": {
+                "title": "Patient"
+            },
+            "internNumber": "Intern Number",
+            "commune": "Commune",
+            "occupation": "Occupation",
+            "employer": "Employer",
+            "representative": "Representative",
+            "reference": "Reference",
+            "observations": "Observations",
+            "person": "Person",
+            "sex": "Sex"
+        }
+    }
+}

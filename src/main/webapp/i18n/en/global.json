@@ -7,6 +7,17 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "treatment": "Treatment",
+                "treatmentItem": "Treatment Item",
+                "item": "Item",
+                "schedule": "Schedule",
+                "appointmentStatusHistory": "Appointment Status History",
+                "patient": "Patient",
+                "employee": "Employee",
+                "address": "Address",
+                "person": "Person",
+                "contact": "Contact",
+                "parameter": "Parameter",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
