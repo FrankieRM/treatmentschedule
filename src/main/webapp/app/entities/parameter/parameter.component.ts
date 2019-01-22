@@ -30,6 +30,9 @@ export class ParameterComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    customSearch: any;
+    parameterStatusActivated: any;
+    parameterStatusDesactivated: any;
 
     constructor(
         protected parameterService: ParameterService,
@@ -54,11 +57,11 @@ export class ParameterComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        if (this.currentSearch) {
+        if (this.customSearch) {
             this.parameterService
                 .search({
                     page: this.page - 1,
-                    query: this.currentSearch,
+                    query: this.customSearch,
                     size: this.itemsPerPage,
                     sort: this.sort()
                 })
@@ -109,19 +112,32 @@ export class ParameterComponent implements OnInit, OnDestroy {
                 sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
             }
         ]);
-        this.loadAll();
+        this.search(this.currentSearch);
     }
 
     search(query) {
-        if (!query) {
-            return this.clear();
+        this.customSearch = '';
+        if (this.parameterStatusActivated === true && !this.parameterStatusDesactivated) {
+            this.customSearch = 'status:true';
         }
+        if (!this.parameterStatusActivated && this.parameterStatusDesactivated === true) {
+            this.customSearch = 'status:false';
+        }
+
+        if (query) {
+            if (this.customSearch) {
+                this.customSearch += ' && ' + query;
+            } else {
+                this.customSearch = query;
+            }
+        }
+
         this.page = 0;
         this.currentSearch = query;
         this.router.navigate([
             '/parameter',
             {
-                search: this.currentSearch,
+                search: this.customSearch,
                 page: this.page,
                 sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
             }

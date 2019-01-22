@@ -11,7 +11,8 @@
                 </dd>
                 <dt><span jhiTranslate="treatmentscheduleApp.parameter.status">Status</span></dt>
                 <dd>
-                    <span>{{parameter.status}}</span>
+                    <label class="btn-danger btn-sm" *ngIf="!parameter.status" jhiTranslate="treatmentscheduleApp.parameter.deactivated">Deactivated</label>
+                    <label class="btn-success btn-sm" *ngIf="parameter.status" jhiTranslate="treatmentscheduleApp.parameter.activated">Activated</label>
                 </dd>
                 <dt><span jhiTranslate="treatmentscheduleApp.parameter.parent">Parent</span></dt>
                 <dd>

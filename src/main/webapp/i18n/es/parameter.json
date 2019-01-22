@@ -19,7 +19,9 @@
             "value": "Value",
             "status": "Status",
             "parent": "Parent",
-            "employee": "Employee"
+            "employee": "Employee",
+            "activated": "Activado",
+            "deactivated": "Desactivado"
         }
     }
 }
