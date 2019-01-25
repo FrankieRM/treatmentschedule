@@ -21,7 +21,8 @@
             "parent": "Parent",
             "employee": "Employee",
             "activated": "Activated",
-            "deactivated": "Deactivated"
+            "deactivated": "Deactivated",
+            "ALL": "ALL"
         }
     }
 }

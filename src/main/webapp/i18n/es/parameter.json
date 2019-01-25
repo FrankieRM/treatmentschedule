@@ -2,26 +2,27 @@
     "treatmentscheduleApp": {
         "parameter": {
             "home": {
-                "title": "Parameters",
-                "createLabel": "Crear nuevo Parameter",
-                "createOrEditLabel": "Crear o editar Parameter",
-                "search": "Search for Parameter"
+                "title": "Parámetros",
+                "createLabel": "Crear nuevo Parámetro",
+                "createOrEditLabel": "Crear o editar Parámetro",
+                "search": "Buscar Parámetro"
             },
-            "created": "Un nuevo Parameter ha sido creado con el identificador {{ param }}",
-            "updated": "Un Parameter ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Parameter ha sido eliminado con el identificador {{ param }}",
+            "created": "Un nuevo Parámetro ha sido creado con el identificador {{ param }}",
+            "updated": "Un Parámetro ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Parámetro ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Parameter {{ id }}?"
+                "question": "¿Seguro que quiere eliminar el Parámetro {{ id }}?"
             },
             "detail": {
-                "title": "Parameter"
+                "title": "Parámetro"
             },
-            "value": "Value",
-            "status": "Status",
-            "parent": "Parent",
-            "employee": "Employee",
+            "value": "Valor",
+            "status": "Estado",
+            "parent": "Grupo",
+            "employee": "Empleado",
             "activated": "Activado",
-            "deactivated": "Desactivado"
+            "deactivated": "Desactivado",
+            "ALL": "TODOS"
         }
     }
 }

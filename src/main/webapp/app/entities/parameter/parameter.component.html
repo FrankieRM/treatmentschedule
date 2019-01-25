@@ -22,7 +22,13 @@
                     </button>
                 </div>
                 <div class="form-group w-100 mt-3">
-                    <label class="form-control-label" jhiTranslate="treatmentscheduleApp.parameter.status">Status</label>
+                    <label class="form-control-label mr-1" jhiTranslate="treatmentscheduleApp.parameter.parent" for="field_parent">Parent</label>
+                    <select class="form-control mr-1" id="field_parent" name="parent" [(ngModel)]="parameterParent">
+                        <option [ngValue]="null">{{'treatmentscheduleApp.parameter.ALL' | translate}}</option>
+                        <option [ngValue]="parameterOption.id === parameterParent?.id ? parameterParent : parameterOption" *ngFor="let parameterOption of parametersParents; trackBy: trackParameterById">{{parameterOption.value}}</option>
+                    </select>
+
+                    <label class="form-control-label ml-3 mr-1" jhiTranslate="treatmentscheduleApp.parameter.status">Status</label>
                     <div class="form-group btn-group btn-group-toggle">
                         <label class="btn-success" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="parameterStatusActivated" [ngModelOptions]="{standalone: true}">
@@ -45,7 +51,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="value"><span jhiTranslate="treatmentscheduleApp.parameter.value">Value</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="status"><span jhiTranslate="treatmentscheduleApp.parameter.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="parent.id"><span jhiTranslate="treatmentscheduleApp.parameter.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parent.value"><span jhiTranslate="treatmentscheduleApp.parameter.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -59,7 +65,7 @@
                 </td>
                 <td>
                     <div *ngIf="parameter.parent">
-                        <a [routerLink]="['../parameter', parameter.parent?.id, 'view' ]" >{{parameter.parent?.id}}</a>
+                        <a [routerLink]="['../parameter', parameter.parent?.id, 'view' ]" >{{parameter.parent?.value}}</a>
                     </div>
                 </td>
                 <td class="text-right">

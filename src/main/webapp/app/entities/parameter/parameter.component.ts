@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
-import { IParameter } from 'app/shared/model/parameter.model';
+import { IParameter, Parameter } from 'app/shared/model/parameter.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
@@ -33,6 +33,8 @@ export class ParameterComponent implements OnInit, OnDestroy {
     customSearch: any;
     parameterStatusActivated: any;
     parameterStatusDesactivated: any;
+    parameterParent?: IParameter;
+    parametersParents: IParameter[];
 
     constructor(
         protected parameterService: ParameterService,
@@ -117,11 +119,24 @@ export class ParameterComponent implements OnInit, OnDestroy {
 
     search(query) {
         this.customSearch = '';
+
+        if (this.parameterParent) {
+            this.customSearch = 'parent.id:' + this.parameterParent.id;
+        }
+
         if (this.parameterStatusActivated === true && !this.parameterStatusDesactivated) {
-            this.customSearch = 'status:true';
+            if (this.customSearch) {
+                this.customSearch += ' && status:true';
+            } else {
+                this.customSearch = 'status:true';
+            }
         }
         if (!this.parameterStatusActivated && this.parameterStatusDesactivated === true) {
-            this.customSearch = 'status:false';
+            if (this.customSearch) {
+                this.customSearch += ' && status:false';
+            } else {
+                this.customSearch = 'status:false';
+            }
         }
 
         if (query) {
@@ -151,6 +166,13 @@ export class ParameterComponent implements OnInit, OnDestroy {
             this.currentAccount = account;
         });
         this.registerChangeInParameters();
+        this.parameterService.search({ query: '!(parent:*)' }).subscribe(
+            (res: HttpResponse<IParameter[]>) => {
+                this.parametersParents = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.parameterParent = null;
     }
 
     ngOnDestroy() {
@@ -182,5 +204,9 @@ export class ParameterComponent implements OnInit, OnDestroy {
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackParameterById(index: number, item: IParameter) {
+        return item.id;
     }
 }
