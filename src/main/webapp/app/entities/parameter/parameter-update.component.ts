@@ -33,7 +33,7 @@ export class ParameterUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ parameter }) => {
             this.parameter = parameter;
         });
-        this.parameterService.query().subscribe(
+        this.parameterService.search({ query: '!(parent:*)' }).subscribe(
             (res: HttpResponse<IParameter[]>) => {
                 this.parameters = res.body;
             },
@@ -45,6 +45,7 @@ export class ParameterUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+        this.parameter.parent = null;
     }
 
     previousState() {

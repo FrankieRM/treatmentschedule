@@ -29,8 +29,8 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="treatmentscheduleApp.parameter.parent" for="field_parent">Parent</label>
                     <select class="form-control" id="field_parent" name="parent" [(ngModel)]="parameter.parent" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="parameterOption.id === parameter.parent?.id ? parameter.parent : parameterOption" *ngFor="let parameterOption of parameters; trackBy: trackParameterById">{{parameterOption.id}}</option>
+                        <option [ngValue]="null">{{'treatmentscheduleApp.parameter.SELECT' | translate}}</option>
+                        <option [ngValue]="parameterOption.id === parameter.parent?.id ? parameter.parent : parameterOption" *ngFor="let parameterOption of parameters; trackBy: trackParameterById">{{parameterOption.value}}</option>
                     </select>
                 </div>
             </div>

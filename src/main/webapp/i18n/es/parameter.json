@@ -22,7 +22,8 @@
             "employee": "Empleado",
             "activated": "Activado",
             "deactivated": "Desactivado",
-            "ALL": "TODOS"
+            "ALL": "TODOS",
+            "SELECT": "SELECCIONAR"
         }
     }
 }
