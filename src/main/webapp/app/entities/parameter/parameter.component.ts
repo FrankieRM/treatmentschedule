@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JhiAlertService, JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
-import { IParameter, Parameter } from 'app/shared/model/parameter.model';
+import { IParameter } from 'app/shared/model/parameter.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
@@ -35,6 +35,7 @@ export class ParameterComponent implements OnInit, OnDestroy {
     parameterStatusDesactivated: any;
     parameterParent?: IParameter;
     parametersParents: IParameter[];
+    parameterFilterParents?: IParameter;
 
     constructor(
         protected parameterService: ParameterService,
@@ -121,7 +122,11 @@ export class ParameterComponent implements OnInit, OnDestroy {
         this.customSearch = '';
 
         if (this.parameterParent) {
-            this.customSearch = 'parent.id:' + this.parameterParent.id;
+            if (this.parameterParent.id === -1) {
+                this.customSearch = '!(parent:*)';
+            } else {
+                this.customSearch = 'parent.id:' + this.parameterParent.id;
+            }
         }
 
         if (this.parameterStatusActivated === true && !this.parameterStatusDesactivated) {
@@ -173,6 +178,10 @@ export class ParameterComponent implements OnInit, OnDestroy {
             (res: HttpErrorResponse) => this.onError(res.message)
         );
         this.parameterParent = null;
+        this.parameterFilterParents = new class implements IParameter {
+            id = -1;
+            value = 'PARENTS';
+        }();
     }
 
     ngOnDestroy() {

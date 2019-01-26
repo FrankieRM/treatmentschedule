@@ -23,6 +23,7 @@
             "activated": "Activado",
             "deactivated": "Desactivado",
             "ALL": "TODOS",
+            "PARENTS": "SOLO GRUPOS",
             "SELECT": "SELECCIONAR"
         }
     }

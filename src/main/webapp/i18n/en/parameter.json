@@ -23,6 +23,7 @@
             "activated": "Activated",
             "deactivated": "Deactivated",
             "ALL": "ALL",
+            "PARENTS": "ONLY PARENTS",
             "SELECT": "SELECT"
         }
     }
