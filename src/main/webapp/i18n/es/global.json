@@ -7,17 +7,17 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "treatment": "Treatment",
+                "treatment": "Tratamientos",
                 "treatmentItem": "Treatment Item",
                 "item": "Item",
-                "schedule": "Schedule",
+                "schedule": "Agenda",
                 "appointmentStatusHistory": "Appointment Status History",
-                "patient": "Patient",
-                "employee": "Employee",
-                "address": "Address",
+                "patient": "Pacientes",
+                "employee": "Empleados",
+                "address": "Sucursales",
                 "person": "Person",
                 "contact": "Contact",
-                "parameter": "Parameter",
+                "parameter": "Parámetros",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
